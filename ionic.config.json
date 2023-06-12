@@ -1,0 +1,8 @@
+{
+  "name": "Bolted",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "2dae3417"
+}
