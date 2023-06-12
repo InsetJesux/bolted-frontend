@@ -1,0 +1,11 @@
+.layout-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+}
