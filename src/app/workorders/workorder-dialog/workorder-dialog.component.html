@@ -1,0 +1,64 @@
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="grid m-0">
+            <div class="col-12 md:col-6">
+                <label for="model" class="block text-900 font-medium mb-2">Modelo</label>
+                <bolted-autocomplete-model [formControl]="formGroup.controls.model"></bolted-autocomplete-model>
+                <small *ngIf="formGroup.controls.model | inputValid" id="model-help" class="p-error">Debes seleccionar
+                    un
+                    modelo</small>
+            </div>
+            <div class="col-12 md:col-6">
+                <label for="serial" class="block text-900 font-medium mb-2">Número de serie</label>
+                <input id="serial" type="text" placeholder="Número de serie" pInputText class="w-full"
+                    [formControl]="formGroup.controls.serial">
+                <small *ngIf="formGroup.controls.serial | inputValid" id="serial-help" class="p-error w-full">Debes
+                    introducir un número de serie</small>
+            </div>
+            <div class="col-12 md:col-4">
+                <label for="purchase-date" class="block text-900 font-medium mb-2">Fecha compra</label>
+                <p-calendar placeholder="Fecha compra" appendTo="body" [formControl]="formGroup.controls.purchaseDate"
+                    styleClass="w-full"></p-calendar>
+                <small *ngIf="formGroup.controls.purchaseDate | inputValid" id="purchase-date-help"
+                    class="p-error w-full">Debes
+                    introducir un número de serie</small>
+            </div>
+            <div class="col-12 md:col-4">
+                <label for="warranty-date" class="block text-900 font-medium mb-2">Fecha garantía</label>
+                <p-calendar placeholder="Fecha garantía" appendTo="body" [formControl]="formGroup.controls.warrantyDate"
+                    styleClass="w-full"></p-calendar>
+                <small *ngIf="formGroup.controls.warrantyDate | inputValid" id="warranty-date-help"
+                    class="p-error w-full">Debes
+                    introducir un número de serie</small>
+            </div>
+            <div class="col-12 md:col-4">
+                <label for="warranty" class="block text-900 font-medium mb-2">Garantía</label>
+                <p-inputSwitch [formControl]="formGroup.controls.isWarranty"></p-inputSwitch>
+                <small *ngIf="formGroup.controls.isWarranty | inputValid" id="warranty-help" class="p-error">Debes introducir un
+                    nombre con mínimo 2 carácteres</small>
+            </div>
+            <div class="col-12">
+                <label for="symptoms" class="block text-900 font-medium mb-2">Síntomas</label>
+                <textarea placeholder="Síntomas" class="w-full" [formControl]="formGroup.controls.symptoms" rows="5"
+                    cols="30" pInputTextarea [autoResize]="true"></textarea>
+                <!-- <input id="symptoms" type="text" placeholder="Síntomas" pInputText class="w-full"
+                [formControl]="formGroup.controls.symptoms"> -->
+                <small *ngIf="formGroup.controls.symptoms | inputValid" id="symptoms-help" class="p-error w-full">Debes
+                    introducir los síntomas</small>
+            </div>
+
+            <div class="col-12">
+                <label for="client" class="block text-900 font-medium mb-2">Cliente</label>
+                <bolted-autocomplete-client [formControl]="formGroup.controls.client"></bolted-autocomplete-client>
+                <small *ngIf="formGroup.controls.client | inputValid" id="client-help" class="p-error">Debes seleccionar
+                    un
+                    cliente</small>
+            </div>
+            <div class="col-12">
+                <p-button pRipple type="submit" [label]="headerName" icon="pi pi-user" styleClass="w-full"
+                    [loading]="isLoading" [disabled]="formGroup.invalid"></p-button>
+            </div>
+
+        </div>
+    </form>
+</div>

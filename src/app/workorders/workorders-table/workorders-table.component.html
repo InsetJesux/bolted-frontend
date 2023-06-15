@@ -1,0 +1,58 @@
+<div class="col-12 px-0">
+    <span class="p-input-icon-left w-full">
+        <i class="pi pi-search"></i>
+        <input class="w-full" pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Buscar..." />
+    </span>
+  </div>
+  <p-table
+        #dt
+        [value]="items"
+        [rows]="10"
+        [paginator]="true"
+        [globalFilterFields]="['id']"
+        [(selection)]="selectedItems"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} órdenes de trabajo"
+        [showCurrentPageReport]="true"
+        responsiveLayout="scroll"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">OT<p-sortIcon field="id"></p-sortIcon></th>
+                <th>Cliente</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Nº Serie</th>
+                <th>Síntomas</th>
+                <th>Fecha compra</th>
+                <th>Fecha garantía</th>
+                <th>Garantía</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.client?.name }}</td>
+                <td>{{ item.model?.brand?.name }}</td>
+                <td>{{ item.model?.name }}</td>
+                <td>{{ item.serial }}</td>
+                <td>{{ item.symptoms }}</td>
+                <td>{{ item.purchaseDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ item.warrantyDate | date:'dd/MM/yyyy' }}</td>
+                <td>
+                    <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': item.isWarranty, 'text-red-500 pi-times-circle': !item.isWarranty }"></i>
+                </td>
+                <td class="flex justify-content-end">
+                    <p-button styleClass="p-button-outlined p-button-warning" (click)="openEditDialog(item)">
+                        <span class="pi pi-pencil"></span>
+                        <span class="ml-2 font-bold">Editar</span>
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">En total hay {{ items ? items.length : 0 }} órdenes de trabajo.</div>
+        </ng-template>
+    </p-table>

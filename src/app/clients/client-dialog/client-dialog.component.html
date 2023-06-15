@@ -1,0 +1,47 @@
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="grid m-0">
+
+            <div class="col-12 md:col-4">
+                <label for="name" class="block text-900 font-medium mb-2">Nombre</label>
+                <input id="name" type="text" placeholder="Nombre" pInputText class="w-full"
+                    [formControl]="formGroup.controls.name">
+                <small *ngIf="formGroup.controls.name | inputValid" id="name-help" class="p-error w-full">Debe tener
+                    como mínimo 2 carácteres</small>
+            </div>
+            <div class="col-12 md:col-4">
+                <label for="nif" class="block text-900 font-medium mb-2">NIF</label>
+                <input id="nif" type="text" placeholder="NIF" pInputText class="w-full"
+                    [formControl]="formGroup.controls.nif">
+                <small *ngIf="formGroup.controls.nif | inputValid" id="nif-help" class="p-error w-full">Debe ser un NIF
+                    válido</small>
+            </div>
+            <div class="col-12 md:col-4">
+                <label for="phone" class="block text-900 font-medium mb-2">Teléfono</label>
+                <input id="phone" type="text" placeholder="Teléfono" pInputText class="w-full"
+                    [formControl]="formGroup.controls.phone">
+                <small *ngIf="formGroup.controls.phone | inputValid" id="phone-help" class="p-error w-full">Debe ser un
+                    número de teléfono válido</small>
+            </div>
+            <div class="col-12 md:col-8">
+                <label for="address" class="block text-900 font-medium mb-2">Dirección</label>
+                <input id="address" type="text" placeholder="Dirección" pInputText class="w-full"
+                    [formControl]="formGroup.controls.address">
+                <small *ngIf="formGroup.controls.address | inputValid" id="address-help" class="p-error w-full">Debe
+                    tener como mínimo 5 carácteres</small>
+            </div>
+
+            <div class="col-12 md:col-4">
+                <label for="city" class="block text-900 font-medium mb-2">Población</label>
+                <bolted-autocomplete-city [fromControl]="formGroup.controls.city"></bolted-autocomplete-city>
+                <small *ngIf="formGroup.controls.city | inputValid" id="city-help" class="p-error">Debes seleccionar una
+                    población</small>
+            </div>
+            <div class="col-12">
+                <p-button pRipple type="submit" [label]="headerName" icon="pi pi-user" styleClass="w-full"
+                    [loading]="isLoading" [disabled]="formGroup.invalid"></p-button>
+            </div>
+        </div>
+
+    </form>
+</div>

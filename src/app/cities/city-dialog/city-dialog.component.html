@@ -1,0 +1,18 @@
+<div>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+          <label for="name" class="block text-900 font-medium mb-2">Nombre</label>
+          <input id="name" type="text" placeholder="Nombre" pInputText class="w-full"
+              [formControl]="formGroup.controls.name">
+          <small *ngIf="formGroup.controls.name | inputValid" id="name-help" class="p-error w-full">Debes introducir un nombre con mínimo 2 carácteres</small>
+      </div>
+      <div class="mb-3">
+          <label for="province" class="block text-900 font-medium mb-2">Provincia</label>
+          <bolted-autocomplete-province [fromControl]="formGroup.controls.province"></bolted-autocomplete-province>
+          <small *ngIf="formGroup.controls.province | inputValid" id="province-help" class="p-error">Debes seleccionar una provincia</small>
+      </div>
+
+      <p-button pRipple type="submit" [label]="headerName" icon="pi pi-user" styleClass="w-full"
+          [loading]="isLoading" [disabled]="formGroup.invalid"></p-button>
+  </form>
+</div>

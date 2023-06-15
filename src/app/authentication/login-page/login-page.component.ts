@@ -5,15 +5,15 @@ import { AuthenticationService } from '../authentication.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'bolted-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
   providers: [MessageService]
 })
-export class LoginPageComponent  implements OnInit {
+export class LoginPageComponent implements OnInit {
   myForm: FormGroup = this.formBuilder.group({
-    email: ['insetjesux@gmail.com', [Validators.required, Validators.email]],
-    password: ['123456', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
 
   isLoading = false;
@@ -34,7 +34,7 @@ export class LoginPageComponent  implements OnInit {
 
     this.authService.login(email, password).subscribe((success) => {
       if (success) {
-        this.router.navigateByUrl('/workorders');
+        this.router.navigateByUrl('/');
       } else {
         this.myForm.reset();
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Las credenciales no son válidas' });

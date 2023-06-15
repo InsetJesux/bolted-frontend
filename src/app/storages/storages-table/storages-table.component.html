@@ -1,0 +1,47 @@
+<div class="col-12 px-0">
+  <span class="p-input-icon-left w-full">
+      <i class="pi pi-search"></i>
+      <input class="w-full" pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Buscar..." />
+  </span>
+</div>
+<p-table
+      #dt
+      [value]="items"
+      [rows]="10"
+      [paginator]="true"
+      [globalFilterFields]="['name']"
+      [(selection)]="selectedItems"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} almacenes"
+      [showCurrentPageReport]="true"
+      responsiveLayout="scroll"
+  >
+      <!-- <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              <h5 class="m-0">Marcas</h5>
+          </div>
+      </ng-template> -->
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Nombre</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item>
+          <tr>
+              <td>{{ item.name }}</td>
+              <td class="flex justify-content-end">
+                  <p-button styleClass="p-button-outlined p-button-warning" (click)="openEditDialog(item)">
+                      <span class="pi pi-pencil"></span>
+                      <span class="ml-2 font-bold">Editar</span>
+                  </p-button>
+                  <!-- <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-text p-button-raised p-button-success mr-2" (click)="editBrand(brand)"></button>
+                  <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-text p-button-raised p-button-warning" (click)="deleteBrand(brand)"></button> -->
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">En total hay {{ items ? items.length : 0 }} almacenes.</div>
+      </ng-template>
+  </p-table>

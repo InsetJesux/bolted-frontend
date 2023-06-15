@@ -1,0 +1,44 @@
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="name" class="block text-900 font-medium mb-2">Nombre</label>
+            <input id="name" type="text" placeholder="Nombre" pInputText class="w-full"
+                [formControl]="formGroup.controls.name">
+            <small *ngIf="formGroup.controls.name | inputValid" id="name-help" class="p-error">Debes introducir un
+                nombre con mínimo 2 carácteres</small>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="block text-900 font-medium mb-2">Correo electrónico</label>
+            <input id="email" type="text" placeholder="Correo electrónico" pInputText class="w-full"
+                [formControl]="formGroup.controls.email">
+            <small *ngIf="formGroup.controls.email | inputValid" id="email-help" class="p-error">Debe ser un correo
+                electrónico válido</small>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="block text-900 font-medium mb-2">Contraseña</label>
+            <input id="password" type="text" placeholder="Contraseña" pInputText class="w-full"
+                [formControl]="formGroup.controls.password">
+            <small *ngIf="formGroup.controls.password | inputValid" id="password-help" class="p-error">Debe tener una
+                mayúscula, minúscula y un número, y, tener de 6 a 50 carácteres</small>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="block text-900 font-medium mb-2">Rol</label>
+            <p-dropdown [formControl]="formGroup.controls.role" [options]="roles" optionLabel="name" optionValue="id"
+                styleClass="w-full"></p-dropdown>
+            <!-- <input id="rol" type="text" placeholder="Nombre" pInputText class="w-full"
+            [formControl]="formGroup.controls.role"> -->
+            <small *ngIf="formGroup.controls.role | inputValid" id="rol-help" class="p-error">Debes introducir un nombre
+                con mínimo 2 carácteres</small>
+        </div>
+        <div class="mb-3">
+            <label for="active" class="block text-900 font-medium mb-2">Activo</label>
+            <p-inputSwitch [formControl]="formGroup.controls.isActive"></p-inputSwitch>
+            <!-- <input id="active" type="text" placeholder="Nombre" pInputText class="w-full"
+            [formControl]="formGroup.controls.isActive"> -->
+            <small *ngIf="formGroup.controls.isActive | inputValid" id="active-help" class="p-error">Debes introducir un
+                nombre con mínimo 2 carácteres</small>
+        </div>
+        <p-button pRipple type="submit" [label]="headerName" icon="pi pi-user" styleClass="w-full" [loading]="isLoading"
+            [disabled]="formGroup.invalid"></p-button>
+    </form>
+</div>

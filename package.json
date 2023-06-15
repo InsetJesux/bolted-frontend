@@ -9,7 +9,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "demo": "ng serve --host=0.0.0.0 --disable-host-check --port=80 --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,8 @@
     "@capacitor/keyboard": "5.0.4",
     "@capacitor/status-bar": "5.0.4",
     "@ionic/angular": "^7.0.0",
+    "chart.js": "^4.3.0",
+    "class-validator": "^0.14.0",
     "ionicons": "^7.0.0",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
